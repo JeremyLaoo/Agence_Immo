@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+/*One = #4d4646;*/
+/*Second = #5b5656;*/
+/*Third = #7fcd91;*/
+/*Fourth = #f5eaea;*/
+/*Orange = #fe8a71 */
+
+.navbar{
+    background-color: #4d4646;
+    height:5rem;
+}
+
+.nav-title{
+    color : #f5eaea; !important;
+    font-size: 1.7rem;
+    text-transform: uppercase;
+    margin: 2rem;
+}
+
+.nav-text{
+    color : #f5eaea; !important;
+    font-size: 1.2rem;
+}
+
+a:hover {
+    color: #fe8a71;
+    text-decoration: none;
+    /*font-size: 1.7rem;*/
+    font-weight: bold;
+}
+

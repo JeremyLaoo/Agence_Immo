@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+/*One = #4d4646;*/
+/*Second = #5b5656;*/
+/*Third = #7fcd91;*/
+/*Fourth = #f5eaea;*/
+/*Orange = #fe8a71 */
+
+
+
+html,
+body{
+    font-family: Montserrat;
+    background-color: #FFFFFF;
+}
+
+h1{
+    color: #fe8a71;
+}
