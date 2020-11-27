@@ -87,6 +87,11 @@ class Property
      */
     private $created_at;
 
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $img;
+
     public function __construct()
     {
         $this->created_at = new \DateTime();
@@ -249,6 +254,18 @@ class Property
     public function setCreatedAt(\DateTimeInterface $created_at): self
     {
         $this->created_at = $created_at;
+
+        return $this;
+    }
+
+    public function getImg(): ?string
+    {
+        return $this->img;
+    }
+
+    public function setImg(string $img): self
+    {
+        $this->img = $img;
 
         return $this;
     }
