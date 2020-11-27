@@ -19,6 +19,19 @@ class PropertyRepository extends ServiceEntityRepository
         parent::__construct($registry, Property::class);
     }
 
+    /* Creation d'une nvlle méthode pour récupérer les enregistrement sold = false */
+
+    public function findAllVisible()
+    {
+        return $this->createQueryBuilder('p')
+                    ->where('p.sold = false')
+                    ->getQuery()
+                    ->getResult();
+                ;
+    }
+
+    /* FIN */
+
     // /**
     //  * @return Property[] Returns an array of Property objects
     //  */
