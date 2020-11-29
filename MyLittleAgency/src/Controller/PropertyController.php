@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use App\Entity\Property;
 use App\Repository\PropertyRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,36 +15,48 @@ class PropertyController extends AbstractController
   /* Premiere methode pour recuperer les donnees de la DB */
 
     /**
-    *   @var PropertyRepository
-    */
+     *   @var PropertyRepository
+     */
    private $repository;
 
-    public function __construct(PropertyRepository $repository)
+   /**
+    *   @var EntityManagerInterface
+    */
+   private $em;
+
+    public function __construct(PropertyRepository $repository, EntityManagerInterface $em)
     {
         $this->repository = $repository;
+        $this->em = $em;
     }
+
+    /**
+     * @Route("/biens", name="property.index")
+     * @return Response
+     */
 
     public function index():Response
     {
 
     /* Entree des valeurs en dur dans la DB */
 
-        $property = new Property();
-        $property->setTitle('Appartement T4 à Ivry Sur Seine')
-        ->setPrice(290000)
-        ->setRooms(4)
-        ->setBedrooms(3)
-        ->setDescription("My Little Agency vous propose aux pieds des écoles, commerces, transports ( RER A Boissy Saint Léger, Bus ) et accès aux grands axes routiers ( A86, N19 ) un appartement de 5 pièces de 96 m² offrant : une entrée avec placard, un double séjour, une cuisine aménagée, trois chambres, une salle de bains, une salle d'eau, WC séparés. Deux places de parking au sous-sol sécurisé ainsi qu'une cave accompagnent cet appartement ! Idéalement situé, laissez vous séduire par ses volumes et sa luminosité , une visite s'impose !")
-        ->setSurface(80)
-        ->setFloor(6)
+    /*    $property = new Property();
+        $property->setTitle('Appartement T3 à Villejuif')
+        ->setPrice(275000)
+        ->setRooms(3)
+        ->setBedrooms(2)
+        ->setDescription("My Little Agency vous propose aux pieds des écoles, commerces, transports et accès aux grands axes routiers un appartement de 3 pièces de 80 m² offrant : une entrée avec placard, un double séjour, une cuisine aménagée, trois chambres, une salle de bains, une salle d'eau, WC séparés. Deux places de parking au sous-sol sécurisé ainsi qu'une cave accompagnent cet appartement ! Idéalement situé, laissez vous séduire par ses volumes et sa luminosité , une visite s'impose !")
+        ->setSurface(55)
+        ->setFloor(5)
         ->setHeat(1)
-        ->setCity('Ivry Sur Seine')
-        ->setAddress('7 rue Maurice Grandcoing')
-        ->setPostalCode('94200')
-        ->setImg('data:image/jpeg;base64,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');
+        ->setCity('Villejuif')
+        ->setAddress('10 rue Marguerite Chapon')
+        ->setPostalCode('94800')
+        ->setImg('https://www.planete-deco.fr/wp-content/uploads/2017/10/BI0-2.jpg');
         $em = $this->getDoctrine()->getManager();
         $em->persist($property);
         $em->flush();
+    */
         /* Fin Entree des valeurs en dur dans la DB */
 
         /* Recuperer un seul enregistrement par l id=
@@ -69,14 +82,12 @@ class PropertyController extends AbstractController
 
          /* Creation dans le propertyRepository.php une méthode pour récuperer un enregistrement  */
 
-        $property = $this->repository->findAllVisible();
-        dump($property);
         return $this->render('property/index.html.twig',
             ['current_menu' => 'properties']
         );
     }
 
-  /* Fin de première méthode pour recuperer les donnees de la DB */
+          /* Fin */
   /* Deuxième méthode pour recuperer les donnees de la DB */
 
   /* public function index(PropertyRepository $repository):Response
@@ -89,4 +100,18 @@ class PropertyController extends AbstractController
 
 
   /* Fin de la Deuxième méthode pour recuperer les donnees de la DB */
+
+    /**
+     * @Route("/biens/{slug}-{id}", name="property.show", requirements={"slug": "[a-z0-9\-]*"})
+     * @return Response
+     */
+
+    public function show($slug, $id): Response
+    {
+        $property = $this->repository->find($id);
+        return $this->render('property/show.html.twig',[
+            'property' => $property,
+            'current_menu' => 'properties'
+        ]);
+    }
 }

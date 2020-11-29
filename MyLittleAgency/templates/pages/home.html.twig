@@ -2,11 +2,131 @@
 {% block title %}Home{% endblock %}
 
 
+
 {%  block body %}
-<div class="text-center mt-4">
-    <h1> My Little Agency </h1>
-    <span>Votre agence de location</span>
-</div>
+
+    <div class="container">
+        <div class="title text-center mt-4">
+            <h1>My Little Agency</h1>
+            <p>Votre agence de location</p>
+        </div>
+        <div class="row">
+            {% for property in properties %}
+            <div class="col-md-4">
+                <div class="card text-center mt-4 mb-4" style="min-height: 25rem">
+                    <img src="{{ property.img }}" alt="" class="card-img-top img-card">
+                    <div class="card-body">
+                        <div class="bloc-title">
+                            <h5 class="card-title"><a class="titleCard" href="{{ path('property.show', {id: property.id, slug: property.slug}) }}">{{ property.title }}</a></h5>
+                        </div>
+                        <div class="bloc-details">
+                            <div class="row row-group" >
+                                <div class="col-md-6 row">
+                                    <div class="icon-card">
+                                        <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-cash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" d="M15 4H1v8h14V4zM1 3a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H1z"/>
+                                            <path d="M13 4a2 2 0 0 0 2 2V4h-2zM3 4a2 2 0 0 1-2 2V4h2zm10 8a2 2 0 0 1 2-2v2h-2zM3 12a2 2 0 0 0-2-2v2h2zm7-4a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="data">
+                                        <p class="card-text"> {{ property.formattedPrice }}€</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 row">
+
+                                </div>
+
+                            </div>
+                            <div class="row row-group" >
+                                <div class="col-md-6 row">
+                                    <div class="icon-card">
+                                        <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-fullscreen" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4A1.5 1.5 0 0 1 1.5 0h4a.5.5 0 0 1 0 1h-4zM10 .5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 16 1.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5zM.5 10a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 0 14.5v-4a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v4a1.5 1.5 0 0 1-1.5 1.5h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="data">
+                                        <p class="card-text"> {{ property.surface}}m²</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 row">
+                                    <div class="icon-card">
+                                        <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-box" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5 8 5.961 14.154 3.5 8.186 1.113zM15 4.239l-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="data">
+                                        <p class="card-text">  {{ property.rooms}} pièce(s)</p>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+
+{#<div class="text-center mt-4">#}
+{#    <h1> My Little Agency </h1>#}
+{#    <span>Votre agence de location</span>#}
+{#</div>#}
+
+{#<div class="container text-center mt-4">#}
+{#    <div class="card-deck">#}
+{#        <div class="row">#}
+{#            {% for property in properties %}#}
+
+{#                    <div class="card col-lg-3" >#}
+{#                        <img src="{{ property.img }}" class="card-img-top" alt="...">#}
+{#                        <div class="card-body">#}
+{#                            <h5 class="card-title"><a href="#" class="text-primary">{{ property.title }}</a></h5>#}
+{#                            <ul class="list-group list-group-flush">#}
+{#                                <li class="list-group-item"> <p class="card-text">Prix :{{ property.price | number_format(0, '', ' ') }}€</p></li>#}
+{#                                <li class="list-group-item">Dapibus ac facilisis in</li>#}
+{#                                <li class="list-group-item">Vestibulum at eros</li>#}
+{#                            </ul>#}
+
+
+{#                        </div>#}
+{#                    </div>#}
+
+
+{#            {% endfor %}#}
+{#        </div>#}
+
+
+
+{#    </div>#}
+{#</div>#}
+
+
+{#<div class="container">#}
+{#    <h2>Les derniers biens</h2>#}
+{#    <div class="row flex"></div>#}
+{#    {% for property in properties %}#}
+{#        <div class="col-3">#}
+{#            <div class="card">#}
+{#                <div class="card-body">#}
+{#                    <h5 class="card-title">#}
+{#                        <a href="#"> {{ property.title }}</a>#}
+{#                    </h5>#}
+{#                    <p class="card-text">{{ property.city }} {{ property.postalCode }}</p>#}
+{#                    <div class="text-primary">{{ property.price | number_format(0, '', ' ') }}€</div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+
+{#    {% endfor %}#}
+
+
+
+{#</div>#}
 
 
 {% endblock %}

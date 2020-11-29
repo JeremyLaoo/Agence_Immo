@@ -3,3 +3,27 @@
 /*Third = #7fcd91;*/
 /*Fourth = #f5eaea;*/
 /*Orange = #fe8a71 */
+.card{
+    box-shadow: 3px 3px 2px #f5eaea;
+}
+.img-card{
+    min-height: 18rem;
+}
+.bloc-title{
+    margin: 2rem 0rem;
+    min-height: 3rem;
+}
+.titleCard{
+    color:#fe8a71;
+}
+.icon-card{
+    margin:0px 10px 0px 5px;
+}
+.card-text{
+    font-size: 16px;
+}
+.row-group{
+    display: flex;
+    justify-content: center;
+    margin: 10px 0px;
+}

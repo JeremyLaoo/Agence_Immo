@@ -17,3 +17,7 @@ body{
 h1{
     color: #fe8a71;
 }
+
+.container{
+    width:90%;
+}

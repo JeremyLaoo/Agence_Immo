@@ -2,10 +2,10 @@ home:
     path: /
     controller: App\Controller\HomeController::index
 
-property:
-    path: /biens
-    controller : App\Controller\PropertyController:index
-
+#property:
+#    path: /biens
+#    controller : App\Controller\PropertyController:index
+#
 
 
 #index:
