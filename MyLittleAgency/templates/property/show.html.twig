@@ -1,11 +1,190 @@
 {% extends 'base.html.twig' %}
 
+{% block title property.title %}
+
 {% block body %}
-    <div class="container">
-         <h1>{{ property.title }}</h1>
+
+    <div class="container mt-4 mb-4">
+        <h3 class="card-title">{{ property.title }}</h3>
+        <img src="{{ property.img }}" class="card-img" alt="...">
+        <div class="card mb-6">
+            <div class="row no-gutters">
+                <div class="col-md-12">
+                    <div class="card-body">
+                        <h5>Description</h5>
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p class="card-text showDescDescText">{{ property.description }}</p>
+                            </div>
+                            <div class="col-md-4">
+                                <div class=" text-center mt-4">
+                                    <a class="btn-perso" href="#" role="button">Contacter My Little Agency</a>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+            </div>
+
+{#            DESCRIPTION ******************************************************* #}
+
+            <div class="row no-gutters">
+                <div class="col-md-12">
+                    <div class="card-body">
+                        <div class="row text-center">
+                            <div class="col-md-3">
+                                <svg width="2.5em" height="2.5em" viewBox="0 0 16 16" class="bi bi-fullscreen" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4A1.5 1.5 0 0 1 1.5 0h4a.5.5 0 0 1 0 1h-4zM10 .5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 16 1.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5zM.5 10a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 0 14.5v-4a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v4a1.5 1.5 0 0 1-1.5 1.5h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5z"/>
+                                </svg>
+                                <p class="showDescDetails"> {{ property.surface}}m²</p>
+                            </div>
+                            <div class="col-md-3">
+                                <svg width="2.5em" height="2.5em" viewBox="0 0 16 16" class="bi bi-box" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5 8 5.961 14.154 3.5 8.186 1.113zM15 4.239l-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"/>
+                                </svg>
+                                <p class="showDescDetails">  {{ property.rooms}} pièce(s)</p>
+                            </div>
+                            <div class="col-md-3">
+                                <svg width="2.5em" height="2.5em" viewBox="0 0 16 16" class="bi bi-cash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M15 4H1v8h14V4zM1 3a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H1z"/>
+                                    <path d="M13 4a2 2 0 0 0 2 2V4h-2zM3 4a2 2 0 0 1-2 2V4h2zm10 8a2 2 0 0 1 2-2v2h-2zM3 12a2 2 0 0 0-2-2v2h2zm7-4a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/>
+                                </svg>
+                                <p class="showDescDetails"> {{ property.formattedPrice }}€</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+{#            FIN DESCRIPTION ****************************************************************#}
+
+{#            LOCALISATION ****************************************************************************** #}
+
+            <div class="row no-gutters">
+                <div class="col-md-12">
+                    <div class="card-body">
+                        <h5>Localisation</h5>
+                        <hr />
+
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <p class="showCaracLib">Adresse :</p>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <p class="showCaracDetails">{{ property.address }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <p class="showCaracLib">Ville :</p>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <p class="showCaracDetails">{{ property.city }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <p class="showCaracLib">Code Postal :</p>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <p class="showCaracDetails">{{ property.postalCode }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center mt-4">
+
+                </div>
+            </div>
+
+{#            FIN LOCALISATION ******************************************************************* #}
+
+{#           CARACTERISTIQUE ***************************************************************  #}
+
+            <div class="row no-gutters">
+                <div class="col-md-12">
+                    <div class="card-body">
+                        <h5>Caractéristiques</h5>
+                        <hr />
+
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p class="showCaracLib">Surface habitable :</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p class="showCaracDetails">{{ property.surface }} m²</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p class="showCaracLib">Nombre de pièce(s) :</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p class="showCaracDetails">{{ property.rooms }}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p class="showCaracLib">Nombre de chambre(s) :</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p class="showCaracDetails">{{ property.bedrooms }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <p class="showCaracLib">Etage :</p>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <p class="showCaracDetails">{{ property.floor }}</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <p class="showCaracLib">Type de chauffage :</p>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <p class="showCaracDetails">{{ property.heatType }}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center mt-4">
+
+                </div>
+            </div>
+
+{#            FIN DES CARACTERISTIQUE ************************************************************* #}
+
+
+
+        </div>
+
     </div>
 {% endblock %}
 
-{% block title %}
 
-{% endblock %}
+

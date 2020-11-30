@@ -14,10 +14,33 @@ body{
     background-color: #FFFFFF;
 }
 
-h1{
+h1, h2, h3, h4, h5{
     color: #fe8a71;
+    text-transform: uppercase;
 }
 
 .container{
     width:90%;
+}
+
+.card-shadow{
+    box-shadow: 3px 3px 2px #f5eaea;
+}
+.btn-perso{
+    background: #5b5656;
+    border: #5b5656;
+    padding:1rem;
+    border-radius: 5px;
+    color: #FFF;
+}
+.btn-perso:hover{
+    background: #423e3e;
+}
+.btn-perso:focus{
+    background: #423e3e;
+    color:#fe8a71;
+}
+
+@media only screen and (max-width: 1080px) {
+    body{font-size: 12px;}
 }

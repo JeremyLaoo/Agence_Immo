@@ -3,9 +3,8 @@
 /*Third = #7fcd91;*/
 /*Fourth = #f5eaea;*/
 /*Orange = #fe8a71 */
-.card{
-    box-shadow: 3px 3px 2px #f5eaea;
-}
+/*Grey Text= #8A8989 */
+
 .img-card{
     min-height: 18rem;
 }
@@ -26,4 +25,20 @@
     display: flex;
     justify-content: center;
     margin: 10px 0px;
+}
+.showDescDescText{
+    color: #8a8989;
+}
+
+.showDescDetails{
+    margin-top: 1rem;
+    font-size: 22px;
+    font-weight: bold;
+}
+.showCaracLib{
+    font-weight: bold;
+    color: #000000 ;
+}
+.showCaracDetails{
+    color: #8a8989;
 }
