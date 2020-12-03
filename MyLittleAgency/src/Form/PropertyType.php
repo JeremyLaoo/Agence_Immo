@@ -49,7 +49,9 @@ class PropertyType extends AbstractType
             ->add('postal_code', null, [
                 'label'=>'Code Postal'
             ])
-            ->add('sold')
+            ->add('sold', null, [
+                'label'=>'Vendu'
+            ])
             ->add('img')
         ;
     }
